@@ -39,11 +39,18 @@
                             {% assign maybe-active = 'active' %}
                         {% endif %}
 
-                        <li class="nav-item">
+                      <li class="nav-item">
+                         {% if item.link contains '://' %}
+                            <a class="nav-link {{ maybe-active }}"
+                               href="{{ item.link }}">
+                                {{ item.title }}
+                            </a>
+                         {% else %}
                             <a class="nav-link {{ maybe-active }}"
                                href="{{ site.base }}{{ item.link }}">
                                 {{ item.title }}
                             </a>
+                         {% endif %}
                         </li>
 
                     {% endfor %}
